@@ -9,7 +9,7 @@
 #include "RewardsService.hpp"
 #include <iostream>
 
-RewardsService::RewardsService(IEligibilityService& service, std::function<void(void)> callback):
+RewardsService::RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(void)> callback):
                                                                 invalidAcoountIdCallback(callback),
                                                                 eligibilityService(service)
 {

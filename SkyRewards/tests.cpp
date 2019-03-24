@@ -18,6 +18,7 @@
 #include "RewardsService.hpp"
 #include "FailingEligibilityService.hpp"
 #include "MockEligibilityService.hpp"
+#include "MockLogger.hpp"
 
 template<typename T>
 bool compare(std::vector<T>& v1, std::vector<T>& v2)
@@ -28,11 +29,12 @@ bool compare(std::vector<T>& v1, std::vector<T>& v2)
     return v1 == v2;
 }
 
-TEST_CASE( "Service failure returns empty rewards") {
+TEST_CASE( "Service failure returns empty rewards and logs error") {
     bool hasCalledCallbackFlag = false;
-    auto failing_service = FailingEligibilityService();
     
-    auto rewardsService = RewardsService(failing_service, [](){});
+    auto failing_service = FailingEligibilityService();
+    auto logger = MockLogger();
+    auto rewardsService = RewardsService(failing_service,logger, [](){});
     
     Customer customer = Customer(1, {SPORTS,MOVIES});
     
@@ -41,11 +43,15 @@ TEST_CASE( "Service failure returns empty rewards") {
         REQUIRE(rewards.empty());
     } );
     
+    REQUIRE(logger.getLastSeverity() == ERROR );
+    REQUIRE(logger.getLastMessage() == "ERROR: SERVICE_FAILURE");
+    
     REQUIRE(hasCalledCallbackFlag);
 }
 
 TEST_CASE( "Ineligible customer returns empty rewards") {
     bool hasCalledCallbackFlag = false;
+    
     auto customerEligigble = Customer(1, {SPORTS,MOVIES});
     auto customerIneligible = Customer(2, {SPORTS,MOVIES});
     
@@ -54,14 +60,16 @@ TEST_CASE( "Ineligible customer returns empty rewards") {
     customers[customerIneligible.id] = INELIGABLE;
     
     auto mock_service = MockEligibilityService(customers);
+    auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,[](){});
+    auto rewardsService = RewardsService(mock_service,logger,[](){});
     
     rewardsService.getRewards(customerIneligible, [&hasCalledCallbackFlag](std::vector<Reward> rewards){
         hasCalledCallbackFlag = true;
         REQUIRE(rewards.empty());
     } );
     
+    //We have to check that the callback has indeed been called, otherwise an empty implementation would pass the tests because the above REQUIRE would not even be hit.
     REQUIRE(hasCalledCallbackFlag);
 }
 
@@ -76,8 +84,9 @@ TEST_CASE( "Invalid customer id returns empty rewards and notifies client") {
     std::unordered_map<int, CustomerEligible> customers;
     customers[customerValid.id] = ELIGABLE;
     auto mock_service = MockEligibilityService(customers);
+    auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,[&hasNotifiedClientFlag](){
+    auto rewardsService = RewardsService(mock_service,logger,[&hasNotifiedClientFlag](){
         hasNotifiedClientFlag = true;
     });
     
@@ -112,8 +121,9 @@ TEST_CASE( "Eligbile customers get the right rewards") {
     customers[customerINELIGIBLE.id]    = INELIGABLE;
     
     auto mock_service = MockEligibilityService(customers);
+    auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,[](){});
+    auto rewardsService = RewardsService(mock_service,logger,[](){});
     
     rewardsService.getRewards(customerSPORTS, [&hasCalledCallbackFlag](std::vector<Reward> rewards){
         hasCalledCallbackFlag = true;

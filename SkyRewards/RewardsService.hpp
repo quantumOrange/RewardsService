@@ -15,6 +15,7 @@
 #include "enums.hpp"
 #include <vector>
 #include <functional>
+#include "ILogger.hpp"
 
 class RewardsService {
     
@@ -23,7 +24,7 @@ class RewardsService {
     std::vector<Reward> getRewardsForChannels( std::vector<Channel> channels );
     
 public:
-    RewardsService(IEligibilityService& service, std::function<void(void)> invalidAcoountIdCallback);
+    RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(void)> invalidAcoountIdCallback);
     void getRewards(Customer customer, std::function<void(std::vector<Reward>)> callback);
 };
 

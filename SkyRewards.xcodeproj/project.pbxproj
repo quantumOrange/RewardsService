@@ -12,6 +12,7 @@
 		54296BC82247D8CB009D5AA1 /* MockEligibilityService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BC12247D8CB009D5AA1 /* MockEligibilityService.cpp */; };
 		54296BC92247D8CB009D5AA1 /* FailingEligibilityService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BC22247D8CB009D5AA1 /* FailingEligibilityService.cpp */; };
 		54296BCA2247D8CB009D5AA1 /* RewardsService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BC52247D8CB009D5AA1 /* RewardsService.cpp */; };
+		54296BCE2247E49D009D5AA1 /* MockLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BCC2247E49D009D5AA1 /* MockLogger.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,9 @@
 		54296BC52247D8CB009D5AA1 /* RewardsService.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RewardsService.cpp; sourceTree = "<group>"; };
 		54296BC62247D8CB009D5AA1 /* FailingEligibilityService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FailingEligibilityService.hpp; sourceTree = "<group>"; };
 		54296BC72247D8CB009D5AA1 /* MockEligibilityService.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MockEligibilityService.hpp; sourceTree = "<group>"; };
+		54296BCB2247E3B3009D5AA1 /* ILogger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ILogger.hpp; sourceTree = "<group>"; };
+		54296BCC2247E49D009D5AA1 /* MockLogger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MockLogger.cpp; sourceTree = "<group>"; };
+		54296BCD2247E49D009D5AA1 /* MockLogger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MockLogger.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,12 +78,15 @@
 			children = (
 				54296BB52247D532009D5AA1 /* tests.cpp */,
 				54296BC32247D8CB009D5AA1 /* IEligibilityService.hpp */,
+				54296BCB2247E3B3009D5AA1 /* ILogger.hpp */,
 				54296BC22247D8CB009D5AA1 /* FailingEligibilityService.cpp */,
 				54296BC62247D8CB009D5AA1 /* FailingEligibilityService.hpp */,
 				54296BC12247D8CB009D5AA1 /* MockEligibilityService.cpp */,
 				54296BC72247D8CB009D5AA1 /* MockEligibilityService.hpp */,
 				54296BC52247D8CB009D5AA1 /* RewardsService.cpp */,
 				54296BC42247D8CB009D5AA1 /* RewardsService.hpp */,
+				54296BCC2247E49D009D5AA1 /* MockLogger.cpp */,
+				54296BCD2247E49D009D5AA1 /* MockLogger.hpp */,
 				54296BBF2247D839009D5AA1 /* Customer.cpp */,
 				54296BBE2247D839009D5AA1 /* Customer.hpp */,
 				54296BBD2247D74E009D5AA1 /* enums.hpp */,
@@ -145,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54296BCA2247D8CB009D5AA1 /* RewardsService.cpp in Sources */,
+				54296BCE2247E49D009D5AA1 /* MockLogger.cpp in Sources */,
 				54296BC92247D8CB009D5AA1 /* FailingEligibilityService.cpp in Sources */,
 				54296BB62247D532009D5AA1 /* tests.cpp in Sources */,
 				54296BC02247D839009D5AA1 /* Customer.cpp in Sources */,
