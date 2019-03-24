@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54296BB62247D532009D5AA1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BB52247D532009D5AA1 /* main.cpp */; };
+		54296BB62247D532009D5AA1 /* tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BB52247D532009D5AA1 /* tests.cpp */; };
 		54296BC02247D839009D5AA1 /* Customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BBF2247D839009D5AA1 /* Customer.cpp */; };
 		54296BC82247D8CB009D5AA1 /* MockEligibilityService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BC12247D8CB009D5AA1 /* MockEligibilityService.cpp */; };
 		54296BC92247D8CB009D5AA1 /* FailingEligibilityService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BC22247D8CB009D5AA1 /* FailingEligibilityService.cpp */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		54296BB22247D532009D5AA1 /* SkyRewards */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SkyRewards; sourceTree = BUILT_PRODUCTS_DIR; };
-		54296BB52247D532009D5AA1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		54296BB52247D532009D5AA1 /* tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tests.cpp; sourceTree = "<group>"; };
 		54296BBC2247D576009D5AA1 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		54296BBD2247D74E009D5AA1 /* enums.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = enums.hpp; sourceTree = "<group>"; };
 		54296BBE2247D839009D5AA1 /* Customer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Customer.hpp; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		54296BB42247D532009D5AA1 /* SkyRewards */ = {
 			isa = PBXGroup;
 			children = (
-				54296BB52247D532009D5AA1 /* main.cpp */,
+				54296BB52247D532009D5AA1 /* tests.cpp */,
 				54296BC22247D8CB009D5AA1 /* FailingEligibilityService.cpp */,
 				54296BC62247D8CB009D5AA1 /* FailingEligibilityService.hpp */,
 				54296BC32247D8CB009D5AA1 /* IEligibilityService.hpp */,
@@ -146,7 +146,7 @@
 			files = (
 				54296BCA2247D8CB009D5AA1 /* RewardsService.cpp in Sources */,
 				54296BC92247D8CB009D5AA1 /* FailingEligibilityService.cpp in Sources */,
-				54296BB62247D532009D5AA1 /* main.cpp in Sources */,
+				54296BB62247D532009D5AA1 /* tests.cpp in Sources */,
 				54296BC02247D839009D5AA1 /* Customer.cpp in Sources */,
 				54296BC82247D8CB009D5AA1 /* MockEligibilityService.cpp in Sources */,
 			);
