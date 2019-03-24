@@ -34,7 +34,7 @@ TEST_CASE( "Service failure returns empty rewards and logs error") {
     
     auto failing_service = FailingEligibilityService();
     auto logger = MockLogger();
-    auto rewardsService = RewardsService(failing_service,logger, [](){});
+    auto rewardsService = RewardsService(failing_service,logger, [](int invalidId){});
     
     Customer customer = Customer(1, {SPORTS,MOVIES});
     
@@ -62,7 +62,7 @@ TEST_CASE( "Ineligible customer returns empty rewards") {
     auto mock_service = MockEligibilityService(customers);
     auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,logger,[](){});
+    auto rewardsService = RewardsService(mock_service,logger,[](int invalidId){});
     
     rewardsService.getRewards(customerIneligible, [&hasCalledCallbackFlag](std::vector<Reward> rewards){
         hasCalledCallbackFlag = true;
@@ -77,20 +77,25 @@ TEST_CASE( "Invalid customer id returns empty rewards and notifies client") {
     bool hasNotifiedClientFlag = false;
     bool hasCalledCallbackFlag = false;
     
-    auto customerValid = Customer(1, {SPORTS,MOVIES});
-    
-    auto customerInvalid = Customer(2, {SPORTS,MOVIES});
+    auto validCustomer= Customer(1, {SPORTS,MOVIES});
+    auto validCustomer2 = Customer(2, {SPORTS,MOVIES});
+    auto invalidCustomer = Customer(3, {SPORTS,MOVIES});
     
     std::unordered_map<int, CustomerEligible> customers;
-    customers[customerValid.id] = ELIGABLE;
+    
+    //pass valid customers to mock, but not the invalid one.
+    customers[validCustomer.id] = ELIGABLE;
+    customers[validCustomer2.id] = INELIGABLE;
+    
     auto mock_service = MockEligibilityService(customers);
     auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,logger,[&hasNotifiedClientFlag](){
+    auto rewardsService = RewardsService(mock_service,logger,[&hasNotifiedClientFlag,invalidCustomer](int invalidId){
+        REQUIRE(invalidId == invalidCustomer.id);
         hasNotifiedClientFlag = true;
     });
     
-    rewardsService.getRewards(customerInvalid, [&hasNotifiedClientFlag, &hasCalledCallbackFlag](std::vector<Reward> rewards){
+    rewardsService.getRewards(invalidCustomer, [&hasCalledCallbackFlag](std::vector<Reward> rewards){
         hasCalledCallbackFlag = true;
         REQUIRE(rewards.empty());
     } );
@@ -98,6 +103,32 @@ TEST_CASE( "Invalid customer id returns empty rewards and notifies client") {
     REQUIRE(hasNotifiedClientFlag);
     REQUIRE(hasCalledCallbackFlag);
 }
+
+TEST_CASE( "Does not notify client of inlaid id for valid customers") {
+    bool hasNotifiedClientFlag = false;
+   
+    auto validCustomer= Customer(1, {SPORTS,MOVIES});
+    auto validCustomer2 = Customer(2, {SPORTS,MOVIES});
+    
+    std::unordered_map<int, CustomerEligible> customers;
+    
+    customers[validCustomer.id] = ELIGABLE;
+    customers[validCustomer2.id] = INELIGABLE;
+    
+    auto mock_service = MockEligibilityService(customers);
+    auto logger = MockLogger();
+    
+    auto rewardsService = RewardsService(mock_service,logger,[&hasNotifiedClientFlag](int invalidId){
+        hasNotifiedClientFlag = true;
+    });
+    
+    rewardsService.getRewards(validCustomer, [](std::vector<Reward> rewards){});
+    rewardsService.getRewards(validCustomer2, [](std::vector<Reward> rewards){});
+    
+    REQUIRE(!hasNotifiedClientFlag);
+}
+
+
 
 TEST_CASE( "Eligbile customers get the right rewards") {
     bool hasCalledCallbackFlag = false;
@@ -123,7 +154,7 @@ TEST_CASE( "Eligbile customers get the right rewards") {
     auto mock_service = MockEligibilityService(customers);
     auto logger = MockLogger();
     
-    auto rewardsService = RewardsService(mock_service,logger,[](){});
+    auto rewardsService = RewardsService(mock_service,logger,[](int invalidId){});
     
     rewardsService.getRewards(customerSPORTS, [&hasCalledCallbackFlag](std::vector<Reward> rewards){
         hasCalledCallbackFlag = true;

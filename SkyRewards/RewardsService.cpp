@@ -9,7 +9,7 @@
 #include "RewardsService.hpp"
 #include <iostream>
 
-RewardsService::RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(void)> callback):
+RewardsService::RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(int)> callback):
                                                                 invalidAcoountIdCallback(callback),
                                                                 eligibilityService(service),
                                                                 logger(logger)
@@ -46,7 +46,7 @@ void RewardsService::getRewards(Customer customer, std::function<void(std::vecto
                 callback(rewards);
                 break;
             case INVALID_ACCOUNT_ID:
-                this->invalidAcoountIdCallback();
+                this->invalidAcoountIdCallback(customer.id);
                 callback({});
                 break;
             case SERVICE_FAILURE:

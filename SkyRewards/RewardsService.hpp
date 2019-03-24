@@ -18,14 +18,14 @@
 #include "ILogger.hpp"
 
 class RewardsService {
-    
-    std::function<void(void)> invalidAcoountIdCallback;
+
+    std::function<void(int)> invalidAcoountIdCallback;
     ILogger& logger;
     IEligibilityService& eligibilityService;
     std::vector<Reward> getRewardsForChannels( std::vector<Channel> channels );
     
 public:
-    RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(void)> invalidAcoountIdCallback);
+    RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(int)> invalidAcoountIdCallback);
     void getRewards(Customer customer, std::function<void(std::vector<Reward>)> callback);
 };
 
