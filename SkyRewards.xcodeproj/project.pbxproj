@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54296BB62247D532009D5AA1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BB52247D532009D5AA1 /* main.cpp */; };
+		54296BC02247D839009D5AA1 /* Customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54296BBF2247D839009D5AA1 /* Customer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,8 @@
 		54296BB52247D532009D5AA1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		54296BBC2247D576009D5AA1 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 		54296BBD2247D74E009D5AA1 /* enums.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = enums.hpp; sourceTree = "<group>"; };
+		54296BBE2247D839009D5AA1 /* Customer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Customer.hpp; sourceTree = "<group>"; };
+		54296BBF2247D839009D5AA1 /* Customer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Customer.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			isa = PBXGroup;
 			children = (
 				54296BB52247D532009D5AA1 /* main.cpp */,
+				54296BBF2247D839009D5AA1 /* Customer.cpp */,
+				54296BBE2247D839009D5AA1 /* Customer.hpp */,
 				54296BBD2247D74E009D5AA1 /* enums.hpp */,
 				54296BBC2247D576009D5AA1 /* catch.hpp */,
 			);
@@ -123,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54296BB62247D532009D5AA1 /* main.cpp in Sources */,
+				54296BC02247D839009D5AA1 /* Customer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
