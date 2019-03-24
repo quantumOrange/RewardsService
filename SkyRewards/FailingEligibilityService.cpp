@@ -9,5 +9,5 @@
 #include "FailingEligibilityService.hpp"
 
 void FailingEligibilityService::isEligible(int id, std::function<void(CustomerEligible)> callback ) {
-    
+    callback(SERVICE_FAILIURE);
 }

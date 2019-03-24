@@ -16,5 +16,11 @@ MockEligibilityService::MockEligibilityService(std::unordered_map<int,CustomerEl
 }
 
 void MockEligibilityService::isEligible(int id, std::function<void(CustomerEligible)> callback) {
-    
+    if(customers.find(id)  != customers.end()){
+        auto eligiblility = customers[id];
+        callback(eligiblility);
+    }
+    else {
+        callback(INVALID_ACCOUNT_ID);
+    }
 }

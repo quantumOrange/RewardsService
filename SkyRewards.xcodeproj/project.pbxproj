@@ -73,9 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				54296BB52247D532009D5AA1 /* tests.cpp */,
+				54296BC32247D8CB009D5AA1 /* IEligibilityService.hpp */,
 				54296BC22247D8CB009D5AA1 /* FailingEligibilityService.cpp */,
 				54296BC62247D8CB009D5AA1 /* FailingEligibilityService.hpp */,
-				54296BC32247D8CB009D5AA1 /* IEligibilityService.hpp */,
 				54296BC12247D8CB009D5AA1 /* MockEligibilityService.cpp */,
 				54296BC72247D8CB009D5AA1 /* MockEligibilityService.hpp */,
 				54296BC52247D8CB009D5AA1 /* RewardsService.cpp */,
