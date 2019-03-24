@@ -15,7 +15,7 @@ enum Reward {
     PIRATES_OF_THE_CARIBBEAN_COLLECTION
 };
 
-enum Channel {
+enum ChannelSubscription {
     SPORTS,
     KIDS,
     MUSIC,

@@ -22,7 +22,7 @@ class RewardsService {
     std::function<void(int)> invalidAcoountIdCallback;
     ILogger& logger;
     IEligibilityService& eligibilityService;
-    std::vector<Reward> getRewardsForChannels( std::vector<Channel> channels );
+    std::vector<Reward> getRewardsForChannels( std::vector<ChannelSubscription> portfolio );
     
 public:
     RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(int)> invalidAcoountIdCallback);

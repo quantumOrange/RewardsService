@@ -17,11 +17,11 @@ RewardsService::RewardsService(IEligibilityService& service, ILogger& logger, st
     
 }
 
-std::vector<Reward> RewardsService::getRewardsForChannels( std::vector<Channel> channels ) {
+std::vector<Reward> RewardsService::getRewardsForChannels( std::vector<ChannelSubscription> portfolio ) {
     std::vector<Reward> rewards = {};
     
-    for(auto channel : channels){
-        switch (channel) {
+    for(auto subscription : portfolio){
+        switch (subscription) {
             case SPORTS:
                 rewards.push_back(CHAMPIONS_LEAGUE_FINAL_TICKET);
                 break;
@@ -38,21 +38,21 @@ std::vector<Reward> RewardsService::getRewardsForChannels( std::vector<Channel> 
     return rewards;
 }
 
-void RewardsService::getRewards(Customer customer, std::function<void(std::vector<Reward>)> callback){
-    auto rewards = this->getRewardsForChannels(customer.channels);
-    eligibilityService.isEligible(customer.id, [customer,callback,rewards,this](CustomerEligible eligible) {
+void RewardsService::getRewards(Customer customer, std::function<void(std::vector<Reward>)> rewardsCallback){
+    auto rewards = this->getRewardsForChannels(customer.portfolio);
+    eligibilityService.isEligible(customer.id, [customer,rewardsCallback,rewards,this](CustomerEligible eligible) {
         switch (eligible) {
             case ELIGABLE:
-                callback(rewards);
+                rewardsCallback(rewards);
                 break;
             case INVALID_ACCOUNT_ID:
                 this->invalidAcoountIdCallback(customer.id);
-                callback({});
+                rewardsCallback({});
                 break;
             case SERVICE_FAILURE:
                 this->logger.log(ERROR,"ERROR: SERVICE_FAILURE");
             default:
-                callback({});
+                rewardsCallback({});
                 break;
         }
     });

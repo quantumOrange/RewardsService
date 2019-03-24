@@ -8,9 +8,9 @@
 
 #include "Customer.hpp"
 
-Customer::Customer(int id, std::vector<Channel> channels):
+Customer::Customer(int id, std::vector<ChannelSubscription> channels):
                                                         id(id),
-                                                        channels(channels)
+                                                        portfolio(channels)
 {
     
 }

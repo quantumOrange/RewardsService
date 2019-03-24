@@ -14,9 +14,9 @@
 #include <vector>
 
 struct Customer {
-    Customer(int id, std::vector<Channel> channels);
+    Customer(int id, std::vector<ChannelSubscription> portfolio);
     const int id;
-    const std::vector<Channel> channels;
+    const std::vector<ChannelSubscription> portfolio;
 };
 
 #endif /* Customer_hpp */
