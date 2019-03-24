@@ -11,7 +11,8 @@
 
 RewardsService::RewardsService(IEligibilityService& service, ILogger& logger, std::function<void(void)> callback):
                                                                 invalidAcoountIdCallback(callback),
-                                                                eligibilityService(service)
+                                                                eligibilityService(service),
+                                                                logger(logger)
 {
     
 }
@@ -49,7 +50,7 @@ void RewardsService::getRewards(Customer customer, std::function<void(std::vecto
                 callback({});
                 break;
             case SERVICE_FAILURE:
-                std::cout << "ERROR: SERVICE_FAILURE" << std::endl;
+                this->logger.log(ERROR,"ERROR: SERVICE_FAILURE");
             default:
                 callback({});
                 break;

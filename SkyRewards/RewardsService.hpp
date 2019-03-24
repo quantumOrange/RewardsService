@@ -20,6 +20,7 @@
 class RewardsService {
     
     std::function<void(void)> invalidAcoountIdCallback;
+    ILogger& logger;
     IEligibilityService& eligibilityService;
     std::vector<Reward> getRewardsForChannels( std::vector<Channel> channels );
     
