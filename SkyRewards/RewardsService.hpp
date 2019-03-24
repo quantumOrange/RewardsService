@@ -17,13 +17,13 @@
 #include <functional>
 
 class RewardsService {
+    
     std::function<void(void)> invalidAcoountIdCallback;
     IEligibilityService& eligibilityService;
+    std::vector<Reward> getRewardsForChannels( std::vector<Channel> channels );
     
 public:
-
     RewardsService(IEligibilityService& service, std::function<void(void)> invalidAcoountIdCallback);
-
     void getRewards(Customer customer, std::function<void(std::vector<Reward>)> callback);
 };
 

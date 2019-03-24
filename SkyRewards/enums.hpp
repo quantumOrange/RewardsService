@@ -27,7 +27,7 @@ enum CustomerEligible {
     ELIGABLE,
     INELIGABLE,
     INVALID_ACCOUNT_ID,
-    SERVICE_FAILIURE
+    SERVICE_FAILURE
 };
 
 #endif /* enums_h */
