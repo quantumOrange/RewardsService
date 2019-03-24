@@ -7,7 +7,7 @@
 //
 
 #include "MockLogger.hpp"
-#import "ILogger.hpp"
+#include "ILogger.hpp"
 
 LogSeverity MockLogger::getLastSeverity(){
     return lastSeverity;
