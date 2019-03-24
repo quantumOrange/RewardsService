@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		54296BB22247D532009D5AA1 /* SkyRewards */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SkyRewards; sourceTree = BUILT_PRODUCTS_DIR; };
 		54296BB52247D532009D5AA1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		54296BBC2247D576009D5AA1 /* catch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		54296BBD2247D74E009D5AA1 /* enums.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = enums.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				54296BB52247D532009D5AA1 /* main.cpp */,
+				54296BBD2247D74E009D5AA1 /* enums.hpp */,
+				54296BBC2247D576009D5AA1 /* catch.hpp */,
 			);
 			path = SkyRewards;
 			sourceTree = "<group>";
@@ -240,6 +244,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y3R5UC5Q;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y3R5UC5Q;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
