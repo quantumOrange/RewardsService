@@ -12,6 +12,12 @@
 #include <stdio.h>
 #include "ILogger.hpp"
 
+
+
+/*
+ This mock logger doesn't really log anything.
+ All it needs to do is keep track of the  last message so that we can test that the right errors are logged at the right time.
+ */
 class MockLogger: public ILogger {
     LogSeverity lastSeverity = INFO;
     std::string lastMessage = "";

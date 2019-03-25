@@ -15,6 +15,9 @@
 
 class IEligibilityService {
 public:
+    /*
+     Given a customer id, checks eligibility status and calls the callback (possibly asynchronously) with the CustomerEligible status code.
+    */
     virtual void isEligible(int id,  std::function<void(CustomerEligible)> callback) = 0;
 };
 
